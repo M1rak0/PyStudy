@@ -1,6 +1,6 @@
-import requests
-import re
 import os
+import re
+import requests
 
 
 def getImageList(url: str, page: int) -> array:
