@@ -3,7 +3,7 @@ import re
 import requests
 
 
-def getImageList(url: str, page: int) -> array:
+def getImageList(url: str, page: int):
     url = url.format(page)
     sourceCode = requests.get(url).text
     reg = r'alt="(.*?)".*?data-original="(.*?)"'
@@ -12,7 +12,7 @@ def getImageList(url: str, page: int) -> array:
     return imageList
 
 
-def scanner(url, start, end):
+def scanner(url, start, end) -> list:
     res = []
     for i in range(start, end+1):
         res.append(getImageList(url, i))
