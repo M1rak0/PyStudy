@@ -2,3 +2,5 @@
 .python-version
 .vscode
 AIP_Resources.py
+__pycache__
+*test*
