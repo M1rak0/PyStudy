@@ -3,17 +3,15 @@ import time
 import asyncio
 import aiofiles
 import functools
-from contextlib import contextmanager
 
 
 def logger(func):
     @functools.wraps(func)
     def timer(**kwargs):
         start_time = time.time()
-        r = func(**kwargs)
-        print('total time cost of {}: {} second(s)。'.format(
+        func(**kwargs)
+        print('total time cost of {}: {} second(s).'.format(
             func.__name__, time.time() - start_time))
-        return r
     return timer
 
 
