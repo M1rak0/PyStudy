@@ -17,7 +17,7 @@ def logger(func):
 @logger
 def asyncfunc(**kwargs):
     async def subfunc(name: str, waittime: float):
-        print('subfunc {} started.'.format(name))
+        print(f'subfunc {name} started.')
         await asyncio.sleep(waittime)
         print(f'subfunc {name} finished after {waittime} second(s).')
 
