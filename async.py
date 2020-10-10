@@ -10,8 +10,7 @@ def logger(func):
     def timer(**kwargs):
         start_time = time.time()
         func(**kwargs)
-        print('total time cost of {}: {} second(s).'.format(
-            func.__name__, time.time() - start_time))
+        print(f'total time cost of {func.__name__}: {time.time() - start_time} second(s).')
     return timer
 
 
@@ -20,7 +19,7 @@ def asyncfunc(**kwargs):
     async def subfunc(name: str, waittime: float):
         print('subfunc {} started.'.format(name))
         await asyncio.sleep(waittime)
-        print('subfunc {} finished after {} second(s).'.format(name, waittime))
+        print(f'subfunc {name} finished after {waittime} second(s).')
 
     async def loop():
         '''
@@ -37,9 +36,9 @@ def asyncfunc(**kwargs):
 @logger
 def quenefunc(**kwargs):
     def subfunc(name: str, waittime: float):
-        print('subfunc {} started.'.format(name))
+        print(f'subfunc {name} started.')
         time.sleep(waittime)
-        print('subfunc {} finished after {} second(s).'.format(name, waittime))
+        print(f'subfunc {name} finished after {waittime} second(s).')
 
     for arg in kwargs:
         subfunc(arg, kwargs[arg])
