@@ -10,7 +10,8 @@ def logger(func):
     def timer(**kwargs):
         start_time = time.time()
         func(**kwargs)
-        print(f'total time cost of {func.__name__}: {time.time() - start_time} second(s).')
+        print(
+            f'total time cost of {func.__name__}: {time.time() - start_time} second(s).')
     return timer
 
 
