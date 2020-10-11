@@ -14,9 +14,9 @@ def getImageList(url: str, page: int):
 
 def scanner(url, start, end) -> list:
     res = []
-    for i in range(start, end+1):
+    for i in range(start, end + 1):
         res.append(getImageList(url, i))
-        print("正在解析第{}页，请稍候...".format(i))
+        print(f'正在解析第{i}页，请稍候...')
     return res
 
 
@@ -39,13 +39,12 @@ def downloader(inputData):
             img = requests.get(imageUrl).content
             imgPath = './表情包/' + imageName + imageUrl[-4::]
             os.system('clear')
-            print('共{}页，正在下载第{}页...'.format(
-                len(inputData), inputData.index(page)+1))
-            print('当前页面进度{}/{}，当前图片名称：{}。'.format(page.index(imageData) +
-                                                  1, len(page), imageName + imageUrl[-4::]))
+            print(f'共len(inputData)页，正在下载第{inputData.index(page) + 1}页...')
+            print(
+                f'当前页面进度{page.index(imageData) + 1}/{len(page)}，当前图片名称：{imageName + imageUrl[-4::]}。')
             with open(imgPath, 'wb') as f:
                 f.write(img)
-    print('所有项目已下载完毕，共下载{}张表情包。'.format(len(page) * len(inputData)))
+    print(f'所有项目已下载完毕，共下载{len(inputData[0]) * len(inputData)}张表情包。')
 
 
 def action(url, start, end):
